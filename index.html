@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6新特性</title>
+</head>
+<body>
+    <script>
+        //-------------let,const----------------------------------
+        for(let i = 0;i<5;i++){
+            console.log(i)
+        }
+        //let 将i  控制在代码块内 var是 全局的
+        //console.log("循环外打印i" + i)
+        const str =  "hello heima";
+        console.log(str);
+
+      //  str = "dd";
+       // console.log(str)'
+
+        //-------------字符串扩展----------------------------------
+        console.log(str + " 是否包含heima: "+ str.includes("heima"));
+
+        console.log(str + " 是否以heima开始: "+ str.startsWith("heima"));
+
+        console.log(str + " 是否以heima结尾: "+ str.endsWith("heima"));
+
+        let str2 =  `
+        hello
+                       fffss
+                        heima`;
+       console.log(str2);
+    </script>
+
+</body>
+</html>
