@@ -7,6 +7,7 @@
 <body>
     <script>
         //-------------let,const----------------------------------
+        console.log("-------------let,const----------------------------------");
         for(let i = 0;i<5;i++){
             console.log(i)
         }
@@ -18,7 +19,8 @@
       //  str = "dd";
        // console.log(str)'
 
-        //-------------字符串扩展----------------------------------
+        //------------------------字符串扩展------------------------
+        console.log("-------------字符串扩展---------------------------------");
         console.log(str + " 是否包含heima: "+ str.includes("heima"));
 
         console.log(str + " 是否以heima开始: "+ str.startsWith("heima"));
@@ -30,6 +32,137 @@
                        fffss
                         heima`;
        console.log(str2);
+
+        //-------------------------解构------------------------
+        console.log("-------------解构---------------------------------");
+
+        let arr = [1,2,3];
+        let [x,y,z] = arr;
+        console.log(x);
+        console.log(y);
+        console.log(z);
+
+        let [aa] = arr;
+        console.log(aa);
+
+        const person = {
+            name: "weiwei",
+            age: 18,
+            language: ['java','js','h5']
+        };
+        let {name,age,language} = person;
+        console.log(name);
+        console.log(age);
+        console.log(language);
+
+
+        //-------------------------函数优化------------------------
+        console.log("-------------函数优化-:参数默认值-----------------------------");
+
+        function add(a,b=1) {
+            return a+b;
+        }
+        console.log(add(5));
+
+        //-------------------------函数优化------------------------
+        console.log("-------------函数优化-:箭头函数-----------------------------");
+        function print(a) {
+            console.log(a);
+        }
+        print("123");
+
+        let print2= a => console.log(a);
+
+        print2("test 箭头函数");
+
+        let sum = (a,b) => console.log(a+b);
+        sum(10,5);
+        // 多行用{}
+        let sum2 = (a,b) => {
+            return a+b;
+        };
+        console.log(sum2(10,8));
+
+        //函数无参 用一个空括号
+
+        let sayHello =  () => console.log("hello");
+        sayHello();
+
+        //
+        let person2 = {
+            name : "jeck",
+            eat : function (food) {
+                console.log(this.name + "在吃" + food);
+            },
+            eat2: food => console.log(person2.name + "在吃" + food),
+            eat3(food){
+                console.log(this.name + "在吃" + food);
+            }
+        };
+        person2.eat("西瓜");
+        person2.eat2("bei gua");
+        person2.eat3("dong gua");
+
+        function hello(person) {
+            console.log("hello "+person.name );
+        }
+        hello(person2);
+
+        //解构 和=》 混用
+        console.log("------------------解构 和=》 混用-------------------");
+        const  hello2 = ({name}) => console.log("hello2 "+ name);
+        hello2(person2);
+
+        console.log("------------------arr - map-------------------");
+        let  array =  ["1","2","3"];
+        console.log(array);
+       let nArray =  array.map(s => parseInt(s));
+        console.log(nArray);
+        let nArray2 =  array.map(function (s) {
+            return parseInt(s)+3;
+        });
+        console.log(nArray2);
+
+        let res = nArray2.reduce((a,b) => {
+            return a+b;
+        },1);
+        console.log(res);
+        console.log("----------------------扩展运算符-----------------------");
+        console.log(...[1,2,3]);
+        console.log(0,...[1,2,3],4);
+
+        function f(a,b) {
+            return a+b;
+        }
+        let t = [1,2];
+
+        console.log(f(...t));
+
+        let array3 = [...nArray,...nArray2];  //1-6
+        console.log(array3);
+        console.log([...'abcdefg']); //["a", "b", "c", "d", "e", "f", "g"]
+        const [first,...rest] = [1,2,3,4];
+        console.log(first,rest);
+
+        console.log("----------------------promise-----------------------");
+        const p = new Promise((resolve,reject) =>{
+
+            setTimeout(() => {
+                let num = Math.random();
+                if(num <0.5){
+                    resolve("success" + num);
+                }else{
+                    reject("failed" + num);
+                }
+        });
+        });
+        console.log("ok");
+        p.then(value =>
+            console.log(value)
+        ).catch(reason =>
+            console.log(reason)
+        );
+        console.log("ok2");
     </script>
 
 </body>
